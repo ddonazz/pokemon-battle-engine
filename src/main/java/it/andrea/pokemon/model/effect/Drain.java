@@ -20,6 +20,6 @@ public class Drain implements IEffect {
 
     @Override
     public void apply(Battle battle) {
-
+        //TODO
     }
 }

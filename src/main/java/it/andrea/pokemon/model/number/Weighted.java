@@ -3,31 +3,43 @@ package it.andrea.pokemon.model.number;
 import it.andrea.pokemon.battle.Battle;
 
 import java.util.Collection;
-import java.util.Map;
 
 public class Weighted implements INumber {
 
-    // value and its percentual weight
-    private final Collection<Map.Entry<Double, Double>> weights;
-
-    public Weighted(Collection<Map.Entry<Double, Double>> weights) {
-        this.weights = weights;
+    public record WeightedValue(double value, double weight) {
     }
 
+    // value and its percentual weight
+    private final Collection<WeightedValue> weights;
+    private final double totalWeight;
+
+    public Weighted(Collection<WeightedValue> weights) {
+        if (weights == null || weights.isEmpty()) {
+            throw new IllegalArgumentException("Weight collection cannot be null or empty");
+        }
+        this.weights = weights;
+        this.totalWeight = weights.stream().mapToDouble(WeightedValue::weight).sum();
+
+        if (this.totalWeight <= 0) {
+            throw new IllegalArgumentException("Total weight must be greater than zero");
+        }
+    }
 
     @Override
     public double evaluate(Battle battle) {
-        double totalWeight = weights.stream().mapToDouble(Map.Entry::getValue).sum();
         double random = Math.random() * totalWeight;
         double cumulativeWeight = 0.0;
+        WeightedValue lastItem = null;
 
-        for (Map.Entry<Double, Double> entry : weights) {
-            cumulativeWeight += entry.getValue();
+        for (WeightedValue item : weights) {
+            lastItem = item;
+            cumulativeWeight += item.weight();
+
             if (random < cumulativeWeight) {
-                return entry.getKey();
+                return item.value();
             }
         }
 
-        return weights.stream().reduce((first, second) -> second).orElseThrow().getKey();
+        return lastItem.value();
     }
 }

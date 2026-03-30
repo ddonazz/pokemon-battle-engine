@@ -10,9 +10,9 @@ public class FormulaDamage implements IEffect {
     public FormulaDamage(INumber number) {
         this.number = number;
     }
-    
+
     @Override
     public void apply(Battle battle) {
-
+        //TODO
     }
 }

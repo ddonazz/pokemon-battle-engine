@@ -6,7 +6,7 @@ import java.util.Collection;
 
 public class Cascade implements IAttempt {
 
-    private Collection<IAttempt> attempts;
+    private final Collection<IAttempt> attempts;
 
     public Cascade(Collection<IAttempt> attempts) {
         this.attempts = attempts;

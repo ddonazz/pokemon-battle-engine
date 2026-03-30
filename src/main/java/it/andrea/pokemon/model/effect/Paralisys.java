@@ -1,6 +1,7 @@
 package it.andrea.pokemon.model.effect;
 
 import it.andrea.pokemon.battle.Battle;
+import it.andrea.pokemon.battle.StatusCondition;
 import it.andrea.pokemon.model.target.ITarget;
 
 public class Paralisys implements IEffect {
@@ -13,6 +14,6 @@ public class Paralisys implements IEffect {
 
     @Override
     public void apply(Battle battle) {
-
+        target.resolve(battle).setStatusCondition(StatusCondition.PARALYSIS);
     }
 }

@@ -6,14 +6,16 @@ import it.andrea.pokemon.model.effect.IEffect;
 
 public class Attempt implements IAttempt {
 
-    private ICondition<Battle> accuracy;
-    private IEffect onHit;
-    private IEffect onMiss;
-    private IEffect after;
+    private final ICondition<Battle> accuracy;
+    private final IEffect onHit;
+    private final IEffect onMiss;
+    private final IEffect after;
 
     public Attempt(ICondition<Battle> accuracy, IEffect onHit) {
         this.accuracy = accuracy;
         this.onHit = onHit;
+        onMiss = null;
+        after = null;
     }
 
     @Override

@@ -13,6 +13,6 @@ public class OneHitKnockOut implements IEffect {
 
     @Override
     public void apply(Battle battle) {
-
+        target.resolve(battle).setCurrentHp(0);
     }
 }

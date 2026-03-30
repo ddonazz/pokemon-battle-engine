@@ -11,9 +11,8 @@ public class Faint implements IEffect {
         this.target = target;
     }
 
-
     @Override
     public void apply(Battle battle) {
-
+        //TODO
     }
 }

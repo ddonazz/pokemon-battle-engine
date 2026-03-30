@@ -6,8 +6,8 @@ import it.andrea.pokemon.model.condition.ICondition;
 
 public class WithApplicability implements IMove {
 
-    private ICondition<Battler> condition;
-    private IMove wrappedMove;
+    private final ICondition<Battler> condition;
+    private final IMove wrappedMove;
 
     public WithApplicability(ICondition<Battler> condition, IMove wrappedMove) {
         this.condition = condition;
@@ -16,7 +16,7 @@ public class WithApplicability implements IMove {
 
     @Override
     public void execute(Battle battle) {
-        if (condition.check(battle.getAttacker())) {
+        if (condition.check(battle.getDefender())) {
             wrappedMove.execute(battle);
         } else {
             System.out.println("");
