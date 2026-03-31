@@ -16,6 +16,6 @@ public class DirectDamage implements IEffect {
 
     @Override
     public void apply(Battle battle) {
-        //TODO
+        target.resolve(battle).takeDamage((int) damage.evaluate(battle));
     }
 }

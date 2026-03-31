@@ -24,6 +24,10 @@ public class Gen1Damage implements INumber {
         this.type2 = type2;
     }
 
+    public static Builder builder() {
+        return new Builder();
+    }
+
     public static class Builder {
         private INumber level;
         private INumber critical;

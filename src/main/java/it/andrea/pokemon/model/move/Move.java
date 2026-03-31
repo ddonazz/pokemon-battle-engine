@@ -6,9 +6,9 @@ import it.andrea.pokemon.utils.PokemonType;
 
 public class Move implements IMove {
 
-    private String name;
-    private PokemonType type;
-    private IAttempt attempt;
+    private final String name;
+    private final PokemonType type;
+    private final IAttempt attempt;
 
     public Move(String name, PokemonType type, IAttempt attempt) {
         this.name = name;

@@ -2,13 +2,13 @@ package it.andrea.pokemon.battle;
 
 import it.andrea.pokemon.utils.PokemonType;
 
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class Battler {
 
     private String name;
-    private Set<PokemonType> types;
+    private List<PokemonType> types;
     private StatusCondition statusCondition;
     private int statusTurns;
     private PokemonStats stats;
@@ -23,11 +23,11 @@ public class Battler {
         this.name = name;
     }
 
-    public Set<PokemonType> getTypes() {
+    public List<PokemonType> getTypes() {
         return types;
     }
 
-    public void setTypes(Set<PokemonType> types) {
+    public void setTypes(List<PokemonType> types) {
         this.types = types;
     }
 
@@ -39,12 +39,16 @@ public class Battler {
         return currentHp;
     }
 
+    public void setCurrentHp(int currentHp) {
+        this.currentHp = Math.clamp(currentHp, 0, stats.getMaxHp());
+    }
+
     public Map<StatType, Integer> getStatStaged() {
         return statStaged;
     }
 
-    public void setCurrentHp(int currentHp) {
-        this.currentHp = Math.max(0, Math.min(currentHp, stats.getMaxHp()));
+    public StatusCondition getStatusCondition() {
+        return statusCondition;
     }
 
     public void setStatusCondition(StatusCondition statusCondition) {
@@ -52,10 +56,6 @@ public class Battler {
             this.statusCondition = statusCondition;
             this.statusTurns = 0;
         }
-    }
-
-    public StatusCondition getStatusCondition() {
-        return statusCondition;
     }
 
     public int getStat(StatType statType) {
@@ -68,5 +68,15 @@ public class Battler {
             case SPEED -> getStats().getSpeed();
             default -> throw new IllegalArgumentException("Stat not supported: " + statType);
         };
+    }
+
+    public void takeDamage(int damage) {
+        if (damage < 0) return;
+        setCurrentHp(this.currentHp - damage);
+    }
+
+    public void heal(int amount) {
+        if (amount < 0) return;
+        setCurrentHp(this.currentHp + amount);
     }
 }

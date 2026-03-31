@@ -16,6 +16,8 @@ public class RestoreHP implements IEffect {
 
     @Override
     public void apply(Battle battle) {
-
+        target.resolve(battle).setCurrentHp(
+                target.resolve(battle).getCurrentHp() + (int) hpToRestore.evaluate(battle)
+        );
     }
 }
