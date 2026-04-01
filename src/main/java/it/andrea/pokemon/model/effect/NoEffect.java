@@ -6,6 +6,7 @@ public class NoEffect implements IEffect {
 
     @Override
     public void apply(Battle battle) {
+        // nothing to do - null pattern
     }
 
 }

@@ -10,10 +10,18 @@ public class Move implements IMove {
     private final PokemonType type;
     private final IAttempt attempt;
 
-    public Move(String name, PokemonType type, IAttempt attempt) {
+    private Move(String name, PokemonType type, IAttempt attempt) {
         this.name = name;
         this.type = type;
         this.attempt = attempt;
+    }
+
+    public static Move of(String name, PokemonType type, IAttempt attempt) {
+        return new Move(name, type, attempt);
+    }
+
+    public PokemonType getType() {
+        return type;
     }
 
     @Override

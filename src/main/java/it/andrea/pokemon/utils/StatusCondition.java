@@ -1,4 +1,4 @@
-package it.andrea.pokemon.battle;
+package it.andrea.pokemon.utils;
 
 public enum StatusCondition {
     NONE,

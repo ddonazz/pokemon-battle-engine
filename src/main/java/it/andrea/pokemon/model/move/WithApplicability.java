@@ -19,7 +19,7 @@ public class WithApplicability implements IMove {
         if (condition.check(battle.getDefender())) {
             wrappedMove.execute(battle);
         } else {
-            System.out.println("");
+            System.out.println("It doesn't affect " + battle.getDefender().getName() + "...");
         }
     }
 }

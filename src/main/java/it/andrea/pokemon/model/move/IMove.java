@@ -13,7 +13,7 @@ public interface IMove {
     }
 
     default IMove withPrecondition(ICondition<Battle> battle) {
-        return new  WithPrecondition(battle, this);
+        return new WithPrecondition(battle, this);
     }
 
 }

@@ -4,8 +4,12 @@ public class Probability<T> implements ICondition<T> {
 
     private final double probability;
 
-    public Probability(double probability) {
+    private Probability(double probability) {
         this.probability = probability;
+    }
+
+    public static <T> Probability<T> of(double probability) {
+        return new Probability<>(probability);
     }
 
     @Override

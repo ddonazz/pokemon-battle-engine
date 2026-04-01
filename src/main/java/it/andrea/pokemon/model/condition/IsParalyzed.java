@@ -1,7 +1,7 @@
 package it.andrea.pokemon.model.condition;
 
 import it.andrea.pokemon.battle.Battler;
-import it.andrea.pokemon.battle.StatusCondition;
+import it.andrea.pokemon.utils.StatusCondition;
 
 public class IsParalyzed implements ICondition<Battler> {
 

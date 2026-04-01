@@ -1,6 +1,8 @@
 package it.andrea.pokemon.battle;
 
 import it.andrea.pokemon.utils.PokemonType;
+import it.andrea.pokemon.utils.StatType;
+import it.andrea.pokemon.utils.StatusCondition;
 
 import java.util.List;
 import java.util.Map;
@@ -9,11 +11,13 @@ public class Battler {
 
     private String name;
     private List<PokemonType> types;
+    private int level;
     private StatusCondition statusCondition;
     private int statusTurns;
     private PokemonStats stats;
     private int currentHp;
     private Map<StatType, Integer> statStaged;
+
 
     public String getName() {
         return name;
@@ -41,6 +45,10 @@ public class Battler {
 
     public void setCurrentHp(int currentHp) {
         this.currentHp = Math.clamp(currentHp, 0, stats.getMaxHp());
+    }
+
+    public int getLevel() {
+        return level;
     }
 
     public Map<StatType, Integer> getStatStaged() {
