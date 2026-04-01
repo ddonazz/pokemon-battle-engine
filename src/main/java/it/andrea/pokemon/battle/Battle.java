@@ -1,5 +1,7 @@
 package it.andrea.pokemon.battle;
 
+import it.andrea.pokemon.model.rules.IDamageFormula;
+
 /**
  * Represents a battle between two battlers in the Pokémon game.
  */
@@ -8,6 +10,7 @@ public class Battle {
     private Battler attacker;
     private Battler defender;
     private int turnCounter;
+    private IDamageFormula damageFormula;
 
     public Battler getAttacker() {
         return attacker;
@@ -31,5 +34,13 @@ public class Battle {
 
     public void setTurnCounter(int turnCounter) {
         this.turnCounter = turnCounter;
+    }
+
+    public IDamageFormula getDamageFormula() {
+        return damageFormula;
+    }
+
+    public void setDamageFormula(IDamageFormula damageFormula) {
+        this.damageFormula = damageFormula;
     }
 }
