@@ -3,7 +3,6 @@ package it.andrea.pokemon.model.number;
 import it.andrea.pokemon.battle.Battle;
 import it.andrea.pokemon.model.target.ITarget;
 import it.andrea.pokemon.utils.PokemonType;
-import it.andrea.pokemon.utils.TypeChart;
 
 import java.util.List;
 
@@ -29,6 +28,6 @@ public class TypeEffectiveness implements INumber {
 
         PokemonType targetType = targetTypes.get(typeIndex);
 
-        return TypeChart.getMultiplier(moveType, targetType);
+        return battle.getRuleset().getTypeChart().getMultiplier(moveType, targetType);
     }
 }

@@ -10,8 +10,7 @@ public class Level implements INumber {
     public Level(ITarget target) {
         this.target = target;
     }
-
-
+    
     @Override
     public double evaluate(Battle battle) {
         return target.resolve(battle).getLevel();

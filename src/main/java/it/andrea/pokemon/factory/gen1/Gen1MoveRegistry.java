@@ -3,7 +3,6 @@ package it.andrea.pokemon.factory.gen1;
 import it.andrea.pokemon.factory.IMoveRegistry;
 import it.andrea.pokemon.factory.gen1.moves.Gen1NormalMoves;
 import it.andrea.pokemon.model.move.IMove;
-import it.andrea.pokemon.model.number.INumber;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,8 +25,4 @@ public class Gen1MoveRegistry implements IMoveRegistry {
         return moveSupplier.get();
     }
 
-    @Override
-    public INumber getDamageFormula() {
-        return null;
-    }
 }
