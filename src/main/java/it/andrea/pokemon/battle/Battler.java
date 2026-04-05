@@ -4,20 +4,35 @@ import it.andrea.pokemon.utils.PokemonType;
 import it.andrea.pokemon.utils.StatType;
 import it.andrea.pokemon.utils.StatusCondition;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Battler {
 
     private String name;
     private List<PokemonType> types;
-    private int level;
+    private final int level;
     private StatusCondition statusCondition;
     private int statusTurns;
-    private PokemonStats stats;
+    private final PokemonStats stats;
     private int currentHp;
     private Map<StatType, Integer> statStaged;
 
+    public Battler(String name, List<PokemonType> types, int level, PokemonStats stats) {
+        this.name = name;
+        this.types = types;
+        this.level = level;
+        this.stats = stats;
+
+        statusTurns = 0;
+        statusCondition = StatusCondition.NONE;
+        currentHp = stats.getMaxHp();
+
+        statStaged = Arrays.stream(StatType.values())
+                .collect(Collectors.toMap(stat -> stat, stat -> 0));
+    }
 
     public String getName() {
         return name;
@@ -87,4 +102,10 @@ public class Battler {
         if (amount < 0) return;
         setCurrentHp(this.currentHp + amount);
     }
+
+    public void incrementStatusTurn() {
+        statusTurns++;
+    }
+
+
 }

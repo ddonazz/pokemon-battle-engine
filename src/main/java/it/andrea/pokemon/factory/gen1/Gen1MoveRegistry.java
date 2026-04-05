@@ -1,6 +1,7 @@
 package it.andrea.pokemon.factory.gen1;
 
 import it.andrea.pokemon.factory.IMoveRegistry;
+import it.andrea.pokemon.factory.gen1.moves.Gen1GroundMoves;
 import it.andrea.pokemon.factory.gen1.moves.Gen1NormalMoves;
 import it.andrea.pokemon.model.move.IMove;
 
@@ -14,6 +15,7 @@ public class Gen1MoveRegistry implements IMoveRegistry {
 
     public Gen1MoveRegistry() {
         Gen1NormalMoves.register(moveMap);
+        Gen1GroundMoves.register(moveMap);
     }
 
     @Override
