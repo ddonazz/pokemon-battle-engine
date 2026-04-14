@@ -8,9 +8,10 @@ import java.util.Map;
 
 public final class Gen1TypeChart implements ITypeChart {
 
+    private static final ITypeChart INSTANCE = new Gen1TypeChart();
     private final Map<PokemonType, Map<PokemonType, Double>> CHART = new EnumMap<>(PokemonType.class);
 
-    public Gen1TypeChart() {
+    private Gen1TypeChart() {
         for (PokemonType type : PokemonType.values()) {
             CHART.put(type, new EnumMap<>(PokemonType.class));
         }
@@ -126,6 +127,10 @@ public final class Gen1TypeChart implements ITypeChart {
 
         // --- DRAGON ---
         set(PokemonType.DRAGON, PokemonType.DRAGON, 2.0);
+    }
+
+    public static ITypeChart getInstance() {
+        return INSTANCE;
     }
 
     private void set(PokemonType attacker, PokemonType defender, double multiplier) {

@@ -15,6 +15,11 @@ public class WithApplicability implements IMove {
     }
 
     @Override
+    public String getName() {
+        return wrappedMove.getName();
+    }
+
+    @Override
     public void execute(Battle battle) {
         if (condition.check(battle.getDefender())) {
             wrappedMove.execute(battle);

@@ -7,10 +7,29 @@ import it.andrea.pokemon.model.rules.IGenerationRuleset;
  */
 public class Battle {
 
+    private final Battler player1;
+    private final Battler player2;
+    private final IGenerationRuleset ruleset;
+
     private Battler attacker;
     private Battler defender;
+
     private int turnCounter;
-    private IGenerationRuleset ruleset;
+
+    public Battle(Battler player1, Battler player2, IGenerationRuleset ruleset) {
+        this.player1 = player1;
+        this.player2 = player2;
+        this.ruleset = ruleset;
+        this.turnCounter = 1;
+    }
+
+    public Battler getPlayer1() {
+        return player1;
+    }
+
+    public Battler getPlayer2() {
+        return player2;
+    }
 
     public Battler getAttacker() {
         return attacker;

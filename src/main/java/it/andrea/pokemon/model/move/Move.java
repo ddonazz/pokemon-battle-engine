@@ -25,6 +25,11 @@ public class Move implements IMove {
     }
 
     @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
     public void execute(Battle battle) {
         System.out.println(battle.getAttacker().getName() + " use " + name + "!");
         attempt.execute(battle);

@@ -5,12 +5,17 @@ import it.andrea.pokemon.model.condition.ICondition;
 
 public class WithPrecondition implements IMove {
 
-    private ICondition<Battle> condition;
-    private IMove wrappedMove;
+    private final ICondition<Battle> condition;
+    private final IMove wrappedMove;
 
     public WithPrecondition(ICondition<Battle> condition, IMove wrappedMove) {
         this.condition = condition;
         this.wrappedMove = wrappedMove;
+    }
+
+    @Override
+    public String getName() {
+        return wrappedMove.getName();
     }
 
     @Override

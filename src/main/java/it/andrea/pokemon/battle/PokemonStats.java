@@ -17,6 +17,34 @@ public class PokemonStats {
         this.speed = speed;
     }
 
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public int getSpecialDefense() {
+        return specialDefense;
+    }
+
+    public int getSpecialAttack() {
+        return specialAttack;
+    }
+
+    public int getDefense() {
+        return defense;
+    }
+
+    public int getAttack() {
+        return attack;
+    }
+
+    public int getMaxHp() {
+        return maxHp;
+    }
+
     public static class Builder {
         private int maxHp;
         private int attack;
@@ -58,29 +86,5 @@ public class PokemonStats {
         public PokemonStats build() {
             return new PokemonStats(maxHp, attack, defense, specialAttack, specialDefense, speed);
         }
-    }
-
-    public int getSpeed() {
-        return speed;
-    }
-
-    public int getSpecialDefense() {
-        return specialDefense;
-    }
-
-    public int getSpecialAttack() {
-        return specialAttack;
-    }
-
-    public int getDefense() {
-        return defense;
-    }
-
-    public int getAttack() {
-        return attack;
-    }
-
-    public int getMaxHp() {
-        return maxHp;
     }
 }

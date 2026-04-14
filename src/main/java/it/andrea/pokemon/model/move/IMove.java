@@ -8,6 +8,8 @@ public interface IMove {
 
     void execute(Battle battle);
 
+    String getName();
+
     default IMove withApplicability(ICondition<Battler> condition) {
         return new WithApplicability(condition, this);
     }

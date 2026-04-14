@@ -1,6 +1,8 @@
 package it.andrea.pokemon.model.rules.gen1;
 
 import it.andrea.pokemon.battle.Battle;
+import it.andrea.pokemon.factory.IMoveRegistry;
+import it.andrea.pokemon.factory.gen1.Gen1MoveRegistry;
 import it.andrea.pokemon.model.number.*;
 import it.andrea.pokemon.model.rules.IGenerationRuleset;
 import it.andrea.pokemon.model.rules.ITypeChart;
@@ -10,7 +12,14 @@ import it.andrea.pokemon.utils.StatType;
 
 public class Gen1Ruleset implements IGenerationRuleset {
 
-    private final ITypeChart typeChart = new Gen1TypeChart();
+    private static final Gen1Ruleset INSTANCE = new Gen1Ruleset();
+
+    private Gen1Ruleset() {
+    }
+
+    public static Gen1Ruleset getInstance() {
+        return INSTANCE;
+    }
 
     @Override
     public INumber createDamageFormula(INumber basePower, PokemonType moveType, DamageCategory category) {
@@ -36,6 +45,12 @@ public class Gen1Ruleset implements IGenerationRuleset {
 
     @Override
     public ITypeChart getTypeChart() {
-        return this.typeChart;
+        return Gen1TypeChart.getInstance();
     }
+
+    @Override
+    public IMoveRegistry getMoveRegistry() {
+        return Gen1MoveRegistry.getInstance();
+    }
+
 }

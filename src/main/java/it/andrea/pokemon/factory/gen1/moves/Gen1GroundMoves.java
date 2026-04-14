@@ -19,7 +19,7 @@ import java.util.function.Supplier;
 public class Gen1GroundMoves {
 
     public static void register(Map<String, Supplier<IMove>> registry) {
-        registry.put("Fissure", Gen1GroundMoves::createFissure);
+        registry.put("fissure", Gen1GroundMoves::createFissure);
     }
 
     private static IMove createFissure() {

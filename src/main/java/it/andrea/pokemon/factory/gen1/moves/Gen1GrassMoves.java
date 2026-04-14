@@ -1,0 +1,37 @@
+package it.andrea.pokemon.factory.gen1.moves;
+
+import it.andrea.pokemon.battle.Battle;
+import it.andrea.pokemon.model.attempt.Attempt;
+import it.andrea.pokemon.model.condition.Probability;
+import it.andrea.pokemon.model.effect.StandardDamage;
+import it.andrea.pokemon.model.move.IMove;
+import it.andrea.pokemon.model.move.Move;
+import it.andrea.pokemon.model.number.Exactly;
+import it.andrea.pokemon.utils.DamageCategory;
+import it.andrea.pokemon.utils.PokemonType;
+
+import java.util.Map;
+import java.util.function.Supplier;
+
+public class Gen1GrassMoves {
+
+    public static void register(Map<String, Supplier<IMove>> registry) {
+        registry.put("vine whip", Gen1GrassMoves::createVineWhip);
+    }
+
+    public static IMove createVineWhip() {
+        return Move.of(
+                "Vine Whip",
+                PokemonType.GRASS,
+                Attempt.of(
+                        Probability.of(1.0),
+                        StandardDamage.of(
+                                PokemonType.GRASS,
+                                DamageCategory.PHYSICAL,
+                                new Exactly(45),
+                                Battle::getDefender)
+                )
+        );
+    }
+}
+
